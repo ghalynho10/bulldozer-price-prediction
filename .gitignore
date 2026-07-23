@@ -1,6 +1,5 @@
 .ipynb_checkpoints/
 env/
 dev_data/
-data/
-val_results.csv
+
 .DS_Store
