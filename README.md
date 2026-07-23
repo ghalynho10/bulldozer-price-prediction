@@ -2,7 +2,7 @@
 
 An end-to-end machine learning project predicting used heavy-equipment auction prices from historical sales data, built on the Kaggle **Blue Book for Bulldozers** dataset (400,000+ auction records).
 
-**[Live Demo](#)** &nbsp;|&nbsp; **[Notebook](./end-to-end-bulldozer-price-predictions.ipynb)**
+**[Live Demo](https://ghalys-bulldozer-price-prediction.streamlit.app/)** &nbsp;|&nbsp; **[Notebook](./end-to-end-bulldozer-price-predictions.ipynb)**
 
 ![App screenshot placeholder](./screenshot.png)
 
