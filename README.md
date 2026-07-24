@@ -10,7 +10,7 @@ An end-to-end machine learning project predicting used heavy-equipment auction p
 
 ## Problem
 
-Given a bulldozer's characteristics (age, size, configuration, sale date, and more), predict its sale price at auction. This is a regression task evaluated using **RMSLE** (Root Mean Squared Log Error) — the metric used in the original Kaggle competition — which penalizes relative error rather than absolute error, appropriate for a market spanning $5,000 to $140,000+ machines.
+Given a bulldozer's characteristics (Size, configuration, sale date, and more), predict its sale price at auction. This is a regression task evaluated using **RMSLE** (Root Mean Squared Log Error) — the metric used in the original Kaggle competition — which penalizes relative error rather than absolute error, appropriate for a market spanning $5,000 to $140,000+ machines.
 
 ## Results
 

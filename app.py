@@ -29,7 +29,7 @@ st.divider()
 st.header("1. The Problem")
 st.markdown(
     """
-Given a bulldozer's characteristics (age, size, configuration, sale date, etc.), predict its
+Given a bulldozer's characteristics (Size, configuration, sale date, etc.), predict its
 sale price at auction. This is a **regression** task, evaluated using **RMSLE**
 (Root Mean Squared Log Error) — the same metric used in the original Kaggle competition.
 
