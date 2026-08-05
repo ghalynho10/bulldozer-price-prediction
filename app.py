@@ -29,9 +29,9 @@ st.divider()
 st.header("1. The Problem")
 st.markdown(
     """
-Given a bulldozer's characteristics (Size, configuration, sale date, etc.), predict its
-sale price at auction. This is a **regression** task, evaluated using **RMSLE**
-(Root Mean Squared Log Error) — the same metric used in the original Kaggle competition.
+Given a bulldozer's characteristics (size, configuration, sale date, etc.), predict its
+sale price at auction. This is a regression task, evaluated using RMSLE
+(Root Mean Squared Log Error), the same metric used in the original Kaggle competition.
 
 RMSLE penalizes relative error rather than absolute error, which suits a market where a
 $1,000 miss on a $5,000 machine is far more significant than the same miss on a $100,000 machine.
@@ -67,10 +67,10 @@ with col2:
     st.plotly_chart(fig, use_container_width=True)
 
 st.info(
-    "Training the final model on the **full dataset** (rather than the 10,000-row subset used "
+    "Training the final model on the full dataset (rather than the 10,000-row subset used "
     "for hyperparameter search) improved validation RMSLE by ~18% and cut validation MAE by "
-    "over $1,400 — confirming a two-stage tuning strategy (cheap search on a subset, retrain on "
-    "everything) as an efficient approach for large tabular datasets."
+    "over $1,400. That supports a two-stage tuning strategy, cheap search on a subset then "
+    "retrain on everything, for large tabular datasets."
 )
 
 # ---------- Predicted vs Actual ----------
@@ -118,8 +118,8 @@ st.caption(
 
 st.caption(
     "Points close to the red dashed line indicate accurate predictions. The model performs "
-    "consistently across price ranges, with somewhat wider spread at higher price points — "
-    "expected given fewer high-value auctions in the training data."
+    "consistently across price ranges, with somewhat wider spread at higher price points. "
+    "That's expected given fewer high-value auctions in the training data."
 )
 
 # ---------- Feature importance ----------
@@ -139,19 +139,19 @@ st.plotly_chart(fig3, use_container_width=True)
 
 st.markdown(
     """
-**`YearMade`** dominates as the single strongest predictor — consistent with domain intuition,
-since equipment age is the primary driver of resale value. **`ProductSize`** and **`saleYear`**
+`YearMade` dominates as the single strongest predictor, which matches domain intuition
+since equipment age is the primary driver of resale value. `ProductSize` and `saleYear`
 (capturing broader market pricing trends) round out the top drivers.
 
-**Error is consistent across equipment sizes.** Despite `ProductSize` being the second-most
-important feature for predicting price *level*, mean percentage error stays in a narrow 18-21%
-band across all size categories (see Section 3) — the model isn't systematically worse at
+Error is consistent across equipment sizes. Despite `ProductSize` being the second-most
+important feature for predicting price level, mean percentage error stays in a narrow 18-21%
+band across all size categories (see Section 3), so the model isn't systematically worse at
 predicting price for any particular equipment size.
 
-**Limitation worth naming:** `SalesID` and `ModelID` appear among the top 10 despite being
-identifier fields with no inherent causal relationship to price — likely reflecting incidental
-correlations (e.g., IDs assigned roughly in time order) rather than genuine signal. This is a
-candidate for removal in future iterations.
+Limitation worth naming: `SalesID` and `ModelID` appear among the top 10 despite being
+identifier fields with no inherent causal relationship to price. This likely reflects incidental
+correlations (IDs assigned roughly in time order, for example) rather than genuine signal, and
+is a candidate for removal in future iterations.
 """
 )
 
@@ -159,13 +159,13 @@ candidate for removal in future iterations.
 st.header("5. Conclusions & Limitations")
 st.markdown(
     """
-- **Validation RMSLE of 0.244** corresponds to predictions typically within ~24-28% of actual
-  sale price — a reasonably strong result given the inherent variance in used heavy-equipment
+- Validation RMSLE of 0.244 corresponds to predictions typically within ~24-28% of the actual
+  sale price, a reasonably strong result given the inherent variance in used heavy-equipment
   auctions (condition, regional demand, seller reputation aren't fully captured in this dataset).
 - There's a meaningful gap between training RMSLE (0.137) and validation RMSLE (0.244),
   indicating some overfitting. Further tuning (`max_depth`, `min_samples_leaf`) or gradient-boosted
   alternatives (XGBoost) could close this gap.
-- **Next steps:** remove ID-like features contributing spurious importance, compare against
+- Next steps: remove ID-like features contributing spurious importance, compare against
   XGBoost/LightGBM, and expand this demo with a full-feature prediction pipeline.
 """
 )
